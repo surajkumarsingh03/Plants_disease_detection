@@ -1,2 +1,5 @@
-# Ignore dataset folder
-data/
+echo "data/" >> .gitignore
+git rm -r --cached data/
+git add .gitignore
+git commit -m "Ignore dataset directory"
+git push origin main

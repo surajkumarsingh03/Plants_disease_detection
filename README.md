@@ -1,0 +1,19 @@
+🌿 Welcome to the 🌱Plant Disease Detection🌱 Web App 🌿
+This is a deep learning-based web application that detects plant diseases from uploaded leaf images using a Convolutional Neural Network (CNN) model. It is trained on the PlantVillage dataset.
+
+🤖 Features
+     Upload plant leaf images via web interface
+     
+     Predicts plant disease from the image
+     
+     CNN-based model trained on 38 plant disease classes
+     
+     Modern responsive UI with animations and dark/light mode toggle
+
+📈 Demo
+
+![alt text](image.png)
+![alt text](image-1.png) 
+
+
+

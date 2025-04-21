@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Disease Detector</title>
+    <style>
+        :root {
+            --bg-color: rgba(255, 255, 255, 0.788);
+            --text-color: #1a1a1a;
+            --btn-bg: #28a745;
+            --btn-text: #fff;
+        }
+      body.dark {
+            --bg-color: rgba(0, 0, 0, 0.3);
+            --text-color: #f1f1f1;
+            --btn-bg: #6c63ff;
+            --btn-text: #fff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('{{ url_for('static', filename='uploads/A_high-resolution_digital_photograph_showcases_lar.png') }}') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.1); /* dark overlay for transparency */
+            z-index: -1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: var(--text-color);
+            padding: 40px;
+            margin: 5vh auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+        }
+
+        input[type="submit"] {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            opacity: 0.9;
+        }
+
+        img {
+            margin-top: 15px;
+            width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleMode()">🌓 Toggle Mode</button>
+
+    <div class="container">
+        <h2>🌿 Plant Disease Detector 🌿</h2>
+        <form method="post" enctype="multipart/form-data" style="text-align: center;">
+            <input type="file" name="image" required style="margin: 10px auto; display: block;">
+            <br>
+            <input type="submit" value="Detect">
+        </form>
+        
+
+        {% if prediction %}
+            <div class="prediction">🧠 Prediction: {{ prediction }}</div>
+            <img src="{{ image_path }}" alt="Uploaded Leaf">
+        {% endif %}
+    </div>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Disease Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+        }
+
+        input[type="submit"] {
+            background: #27ae60;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #219150;
+        }
+
+        .result {
+            margin-top: 30px;
+        }
+
+        .result h3 {
+            color: #34495e;
+        }
+
+        .result img {
+            margin-top: 15px;
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌿 Plant Disease Detector 🌿</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <input type="submit" value="Detect">
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>🧠 Prediction: <span>{{ prediction }}</span></h3>
+            <img src="{{ image_path }}" alt="Uploaded Plant Image">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Disease Detector</title>
+</head>
+<body>
+    <h2>Upload a Plant Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <input type="submit" value="Detect">
+    </form>
+
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+        <img src="{{ image_path }}" width="300">
+    {% endif %}
+</body>
+</html> -->

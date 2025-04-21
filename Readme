@@ -1,99 +1,11 @@
 🌿 Welcome to the 🌱Plant Disease Detection🌱 Web App 🌿
-
 This is a deep learning-based web application that detects plant diseases from uploaded leaf images using a Convolutional Neural Network (CNN) model. It is trained on the PlantVillage dataset.
 
 🤖 Features
-
-Upload plant leaf images via web interface
-
-Predicts plant disease from the image
-
-CNN-based model trained on 38 plant disease classes
-
-Modern responsive UI with animations and dark/light mode toggle
-
-📈 Demo
-
-
- 
-
-🌐 Technologies Used
-
-Backend:
-
-Python 3
-
-TensorFlow / Keras
-
-Flask
-
-Frontend:
-
-HTML5 / CSS3
-
-JavaScript
-
-Responsive UI with glassmorphism and animations
-
-Model Architecture:
-
-Conv2D (32) ➔ ReLU ➔ MaxPooling
-Conv2D (64) ➔ ReLU ➔ MaxPooling
-Flatten ➔ Dense(128) ➔ Dropout(0.5)
-Output: Dense(num_classes) with Softmax
-
-🏆 Accuracy
-
-Trained over 10 epochs, achieved high accuracy (~95%+) on validation set.
-
-⚙️ How to Run Locally
-
-1. Clone the Repository
-
-git clone https://github.com/your-username/plant-disease-detector.git
-cd plant-disease-detector
-
-2. Setup Environment
-
-pip install -r requirements.txt
-
-3. Prepare Dataset
-
-Download the PlantVillage dataset and place it in:
-
-data/PlantVillage/
-
-4. Train the Model (Optional)
-
-python train_model.py
-
-This saves plant_disease_model.h5
-
-5. Run the App
-
-python app.py
-
-Open browser at http://127.0.0.1:5000
-
-🚀 Deployment Suggestions
-
-Deploy on Render, Heroku, or HuggingFace Spaces
-
-Containerize with Docker for production
-
-🔍 Sample Classes Detected
-
-['Apple___Black_rot', 'Corn___Common_rust', 'Potato___Early_blight',
- 'Tomato___Late_blight', 'Tomato___Healthy', ...]
-
-📄 License
-
-MIT License
-
-🙏 Acknowledgements
-
-PlantVillage Dataset - Kaggle
-
-TensorFlow
-
-Flask
+     - Upload plant leaf images via web interface
+      
+     - Predicts plant disease from the image
+      
+     - CNN-based model trained on 38 plant disease classes
+      
+     - Modern responsive UI with animations and dark/light mode toggle
